@@ -1,4 +1,4 @@
-package com.example.habittracker.presentation.view.screens
+package com.example.habittracker.presentation.view
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

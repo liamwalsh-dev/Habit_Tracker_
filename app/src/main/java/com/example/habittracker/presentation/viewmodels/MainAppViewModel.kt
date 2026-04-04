@@ -38,7 +38,7 @@ class MainAppViewModel @Inject constructor(
         }
     }
 
-    fun completeTask(id: Int) {
+    fun completeTask(id: String) {
         viewModelScope.launch {
             taskRepository.completeTask(id)
             updateStreaks() // Обновляем серии после выполнения задачи

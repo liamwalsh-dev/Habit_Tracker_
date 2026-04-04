@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface TaskRepository {
     fun getTasks(): Flow<List<Task>>
-    suspend fun completeTask(id: Int)
+    suspend fun completeTask(id: String)
     suspend fun getMaxStreak(): Int
     suspend fun getCurrentStreak(): Int
 }
