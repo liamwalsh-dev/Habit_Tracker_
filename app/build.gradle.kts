@@ -51,6 +51,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.hilt.common)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -65,6 +66,11 @@ dependencies {
     // Используем ksp вместо kapt для обработки аннотаций
     ksp(libs.hilt.compiler)
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
-
-
+    implementation("androidx.work:work-runtime-ktx:2.9.0")
+    // DataStore для хранения настроек
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+    // TimePicker
+    implementation("androidx.compose.material3:material3:1.2.0")
+    implementation("androidx.hilt:hilt-work:1.2.0")
+    ksp("androidx.hilt:hilt-compiler:1.2.0")
 }

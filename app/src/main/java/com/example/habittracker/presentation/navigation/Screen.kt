@@ -27,8 +27,8 @@ sealed class Screen(
     object Tasks : Screen(
         route = "tasks",
         title = "Задачи",
-        icon = Icons.Default.Edit,
-        selectedIcon = Icons.Default.Edit
+        icon = Icons.Default.DateRange,
+        selectedIcon = Icons.Default.DateRange
     )
 
     object Statistics : Screen(

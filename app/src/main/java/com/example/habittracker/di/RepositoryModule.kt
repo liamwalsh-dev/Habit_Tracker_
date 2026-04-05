@@ -1,4 +1,4 @@
-package com.example.habittracker.data.di
+package com.example.habittracker.di
 import com.example.habittracker.data.TaskRepositoryImpl
 import com.example.habittracker.domain.TaskRepository
 import dagger.Binds

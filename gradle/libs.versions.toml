@@ -13,6 +13,7 @@ vico = "2.1.3"
 hilt = "2.55"
 # Версия KSP (Kotlin Symbol Processing) — должна совпадать с версией Kotlin в проекте
 ksp = "2.0.21-1.0.28"
+hiltCommon = "1.3.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -36,6 +37,7 @@ vico-compose-m3 = { group = "com.patrykandpatrick.vico", name = "compose-m3", ve
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 # Компилятор Hilt (используется для генерации кода)
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+androidx-hilt-common = { group = "androidx.hilt", name = "hilt-common", version.ref = "hiltCommon" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

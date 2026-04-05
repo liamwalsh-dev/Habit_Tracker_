@@ -137,10 +137,7 @@ private fun TaskItem(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(
-            containerColor = if (task.isCompleted)
-                MaterialTheme.colorScheme.surface.copy(alpha = 0.5f)
-            else
-                MaterialTheme.colorScheme.surface
+            containerColor = MaterialTheme.colorScheme.surface
         ),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
@@ -157,27 +154,17 @@ private fun TaskItem(
                 horizontalArrangement = Arrangement.spacedBy(14.dp),
                 modifier = Modifier.weight(1f)
             ) {
-                // Кастомный чекбокс
-                Box(
-                    modifier = Modifier
-                        .size(32.dp)
-                        .clip(CircleShape)
-                        .background(
-                            if (task.isCompleted)
-                                Color(0xFF4CAF50).copy(alpha = 0.2f)
-                            else
-                                MaterialTheme.colorScheme.primary.copy(alpha = 0.1f)
-                        ),
-                    contentAlignment = Alignment.Center
+                IconButton(
+                    onClick = onCompleteClick,
+                    modifier = Modifier.size(40.dp)
                 ) {
-                    Checkbox(
-                        checked = task.isCompleted,
-                        onCheckedChange = { onCompleteClick() },
-                        modifier = Modifier.size(24.dp),
-                        colors = androidx.compose.material3.CheckboxDefaults.colors(
-                            checkedColor = Color(0xFF4CAF50),
-                            uncheckedColor = MaterialTheme.colorScheme.primary
-                        )
+                    Icon(
+                        painter = painterResource(
+                            id = if (task.isCompleted) R.drawable.ic_check_circle else R.drawable.ic_check_circle_outline
+                        ),
+                        contentDescription = stringResource(R.string.complete_task),
+                        tint = if (task.isCompleted) Color(0xFF4CAF50) else MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.size(28.dp)
                     )
                 }
 
@@ -215,20 +202,7 @@ private fun TaskItem(
                 }
             }
 
-            // Кнопка выполнения (альтернативный вариант)
-            IconButton(
-                onClick = onCompleteClick,
-                modifier = Modifier.size(40.dp)
-            ) {
-                Icon(
-                    painter = painterResource(
-                        id = if (task.isCompleted) R.drawable.ic_check_circle else R.drawable.ic_check_circle_outline
-                    ),
-                    contentDescription = stringResource(R.string.complete_task),
-                    tint = if (task.isCompleted) Color(0xFF4CAF50) else MaterialTheme.colorScheme.primary,
-                    modifier = Modifier.size(28.dp)
-                )
-            }
+
         }
     }
 }

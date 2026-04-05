@@ -32,10 +32,10 @@ private val LightColorScheme = lightColorScheme(
 
 @Composable
 fun HabitTrackerTheme(
-    darkTheme: Boolean = true,  // ← ВСЕГДА ТЕМНАЯ ТЕМА
+    darkTheme: Boolean = true,
     content: @Composable () -> Unit
 ) {
-    val colorScheme = DarkColorScheme  // ← Всегда используем темную тему
+    val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
 
     MaterialTheme(
         colorScheme = colorScheme,

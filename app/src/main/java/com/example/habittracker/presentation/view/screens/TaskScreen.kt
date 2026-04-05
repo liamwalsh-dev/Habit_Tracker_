@@ -41,7 +41,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.habittracker.domain.models.Task
 import com.example.habittracker.domain.models.TaskPriority
-import com.example.habittracker.presentation.view.TaskDialog
+import com.example.habittracker.presentation.view.components.TaskDialog
 import com.example.habittracker.presentation.viewmodels.TaskManagerViewModel
 
 @Composable

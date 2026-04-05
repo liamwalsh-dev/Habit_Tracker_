@@ -12,6 +12,3 @@ data class Task(
     val createdAt: Long = System.currentTimeMillis()
 )
 
-enum class TaskPriority {
-    HIGH, MEDIUM, LOW
-}
