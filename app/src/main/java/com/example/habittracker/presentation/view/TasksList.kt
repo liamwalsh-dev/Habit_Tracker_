@@ -49,7 +49,7 @@ fun TaskList(
     LaunchedEffect(taskManagerViewModel.change) {
         taskManagerViewModel.loadTodayTasks()
     }
-    val taskList by taskManagerViewModel.tasks.collectAsStateWithLifecycle()
+    val taskList by taskManagerViewModel.tasksTodayComplete.collectAsStateWithLifecycle()
 
     Card(
         modifier = Modifier

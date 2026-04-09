@@ -54,7 +54,7 @@ fun TaskManagerScreen(
     LaunchedEffect(viewModel.change) {
         viewModel.loadSampleTasks()
     }
-    val tasks by viewModel.tasksView.collectAsStateWithLifecycle()
+    val tasks by viewModel.tasksAll.collectAsStateWithLifecycle()
     val showDialog by viewModel.showDialog.collectAsStateWithLifecycle()
     val editingTask = viewModel.getEditingTask()
 

@@ -24,8 +24,8 @@ class TaskManagerViewModel @Inject constructor(
 ) : ViewModel() {
     private val _change = MutableStateFlow(0)
     val change = _change.asStateFlow()
-    private val _tasksView = MutableStateFlow(emptyList<Task>())
-    val tasksView = _tasksView.asStateFlow()
+    private val _tasksTodayComplete= MutableStateFlow(emptyList<Task>())
+    val tasksTodayComplete= _tasksTodayComplete.asStateFlow()
 
 
     private val _maxStrick = MutableStateFlow(0)
@@ -33,8 +33,8 @@ class TaskManagerViewModel @Inject constructor(
 
     private val _currentStrick = MutableStateFlow(0)
     val currentStrick: StateFlow<Int> = _currentStrick.asStateFlow()
-    private val _tasks = MutableStateFlow<List<Task>>(emptyList())
-    val tasks: StateFlow<List<Task>> = _tasks.asStateFlow()
+    private val _tasksAll = MutableStateFlow<List<Task>>(emptyList())
+    val tasksAll: StateFlow<List<Task>> = _tasksAll.asStateFlow()
 
     private val _showDialog = MutableStateFlow(false)
     val showDialog: StateFlow<Boolean> = _showDialog.asStateFlow()
@@ -44,13 +44,14 @@ class TaskManagerViewModel @Inject constructor(
     fun loadTodayTasks(){
         viewModelScope.launch {
             appRepository.loadData()
-            _tasks.value = appRepository.getTasks()
+            _tasksTodayComplete.value = appRepository.getTasks()
         }
 
     }
     fun loadSampleTasks() {
         viewModelScope.launch{
-            _tasksView.value = appRepository.getAllTasks()
+            // TODO
+            _tasksAll.value = appRepository.getAllTasks()
         }
     }
 
@@ -62,7 +63,7 @@ class TaskManagerViewModel @Inject constructor(
             description = description,
             isCompleted = false,
             priority = priority)
-        _tasks.value += task
+        _tasksAll.value += task
         viewModelScope.launch{
             appRepository.addTask(task)
         }
@@ -90,7 +91,7 @@ class TaskManagerViewModel @Inject constructor(
     fun deleteTask(id: String) {
         viewModelScope.launch{
             withContext(Dispatchers.IO){
-                _tasks.value = _tasks.value.filter{it.id != id}
+                _tasksAll.value = _tasksAll.value.filter{it.id != id}
                 appRepository.deleteTaskById(id)
             }
         }
@@ -132,7 +133,7 @@ class TaskManagerViewModel @Inject constructor(
     }
     fun completeTask(id: String){
         viewModelScope.launch {
-            _tasks.value = _tasks.value.map {task ->
+            _tasksTodayComplete.value = _tasksTodayComplete.value.map {task ->
                 if (task.id == id){
                     task.copy(isCompleted = !task.isCompleted)
                 } else task
